@@ -1,7 +1,6 @@
 package com.mycompany.app;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 
 class AppTest {
@@ -9,12 +8,12 @@ class AppTest {
     @Test
     void testAppMessage() {
         App app = new App();
-        assertEquals("Bonjour le monde!", app.getGreeting());
+        assertEquals("Bonjour le monde!", app.getMessage());
     }
 
     @Test
-    void testAppMessageNotNull() {
+    void testAppMessageAgain() {
         App app = new App();
-        org.junit.jupiter.api.Assertions.assertNotNull(app.getGreeting());
+        assertEquals("Bonjour le monde!", app.getMessage());
     }
 }
