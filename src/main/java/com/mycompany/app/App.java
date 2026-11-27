@@ -1,19 +1,19 @@
 package com.mycompany.app;
 
-/**
- * Hello world!
- */
-public class App {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
-    private static final String MESSAGE = "Bonjour le monde!";
+class AppTest {
 
-    public App() {}
-
-    public static void main(String[] args) {
-        System.out.println(MESSAGE);
+    @Test
+    void testAppMessage() {
+        App app = new App();
+        assertEquals("Bonjour le monde!", app.getMessage());
     }
 
-    public String getMessage() {
-        return MESSAGE;
+    @Test
+    void testMainMessage() {
+        App app = new App();
+        assertEquals("Bonjour le monde!", app.getMessage());
     }
 }
