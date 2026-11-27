@@ -13,7 +13,7 @@ node {
     stage('Checkout') {
         checkout scm
     }
-    
+
     stage('Build') {
         sh 'mvn -B -DskipTests clean package'
     }
@@ -24,5 +24,19 @@ node {
 
     stage('Exécution') {
         sh 'java -jar target/my-app-1.0-SNAPSHOT.jar'
+    }
+
+    stage('Image') {
+        sh 'docker build -t beddakhliaaymen01/bibliotheque:${BUILD_NUMBER} .'
+    }
+
+    stage('Push') {
+        withCredentials([string(credentialsId: 'docker_hub_pwd_1', variable: 'DOCKERHUB_TOKEN')]) {
+            sh '''
+                echo "$DOCKERHUB_TOKEN" | docker login -u beddakhliaaymen01 --password-stdin
+                docker push beddakhliaaymen01/bibliotheque:${BUILD_NUMBER}
+                docker logout
+            '''
+        }
     }
 }
