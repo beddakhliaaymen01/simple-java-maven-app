@@ -1,25 +1,20 @@
 package com.mycompany.app;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest
-{
+import org.junit.jupiter.api.Test;
+
+class AppTest {
+
     @Test
-    public void testAppConstructor() {
-        App app1 = new App();
-        App app2 = new App();
-        assertEquals(app1.getMessage(), app2.getMessage());
+    void testAppMessage() {
+        App app = new App();
+        assertEquals("Bonjour le monde!", app.getGreeting());
     }
 
     @Test
-    public void testAppMessage()
-    {
+    void testAppMessageNotNull() {
         App app = new App();
-        assertEquals("Bonjour le monde!", app.getGreeting());
+        org.junit.jupiter.api.Assertions.assertNotNull(app.getGreeting());
     }
 }
